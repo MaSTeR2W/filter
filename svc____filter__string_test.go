@@ -4,7 +4,7 @@ import (
 	"net/url"
 	"testing"
 
-	"github.com/MaSTeR2W/filter/v1"
+	"github.com/MaSTeR2W/filter"
 )
 
 func TestStringFilterExceedMaxLengthAr(t *testing.T) {

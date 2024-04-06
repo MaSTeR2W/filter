@@ -5,7 +5,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/MaSTeR2W/filter/v1"
+	"github.com/MaSTeR2W/filter"
 )
 
 func TestDateFilter(t *testing.T) {
