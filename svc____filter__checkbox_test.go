@@ -12,7 +12,7 @@ func TestCheckboxIntFilter(t *testing.T) {
 
 	var fs = filter.NewFilters(
 		filter.FilterConfigs{
-			Sql: sql,
+			SqlSelect: sql,
 		},
 
 		filter.NewCheckboxIntFilter(
@@ -67,7 +67,7 @@ func TestCheckboxIntFilter(t *testing.T) {
 	var test_col_alias = func(t *testing.T) {
 		var fs = filter.NewFilters(
 			filter.FilterConfigs{
-				Sql: sql,
+				SqlSelect: sql,
 			},
 
 			filter.NewCheckboxIntFilter(
@@ -101,7 +101,7 @@ func TestCheckboxIntFilter(t *testing.T) {
 	var test_null_allowed = func(t *testing.T) {
 		var fs = filter.NewFilters(
 			filter.FilterConfigs{
-				Sql: sql,
+				SqlSelect: sql,
 			},
 
 			filter.NewCheckboxIntFilter(
@@ -292,7 +292,7 @@ func TestCheckboxStrFilter(t *testing.T) {
 
 	var fs = filter.NewFilters(
 		filter.FilterConfigs{
-			Sql: sql,
+			SqlSelect: sql,
 		},
 
 		filter.NewCheckboxStrFilter(
@@ -348,7 +348,7 @@ func TestCheckboxStrFilter(t *testing.T) {
 	var test_col_alias = func(t *testing.T) {
 		var fs = filter.NewFilters(
 			filter.FilterConfigs{
-				Sql: sql,
+				SqlSelect: sql,
 			},
 
 			filter.NewCheckboxStrFilter(
@@ -383,7 +383,7 @@ func TestCheckboxStrFilter(t *testing.T) {
 	var test_null_allowed = func(t *testing.T) {
 		var fs = filter.NewFilters(
 			filter.FilterConfigs{
-				Sql: sql,
+				SqlSelect: sql,
 			},
 
 			filter.NewCheckboxStrFilter(

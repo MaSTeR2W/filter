@@ -15,8 +15,8 @@ func TestOrderBy(t *testing.T) {
 
 	var fs = filter.NewFilters(
 		filter.FilterConfigs{
-			Sql:     "SELECT * FROM users",
-			OrderBy: []string{"firstName", "lastName"},
+			SqlSelect: "SELECT * FROM users",
+			OrderBy:   []string{"firstName", "lastName"},
 		},
 	)
 

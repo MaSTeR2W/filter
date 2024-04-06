@@ -13,7 +13,7 @@ func TestIntFilter(t *testing.T) {
 
 	var fs = filter.NewFilters(
 		filter.FilterConfigs{
-			Sql: sql,
+			SqlSelect: sql,
 		},
 		filter.NewIntFilter(filter.IntFilterOpts{
 			Key:       "age",

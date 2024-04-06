@@ -15,10 +15,10 @@ func TestPageLimitFilter(t *testing.T) {
 
 	var fs = filter.NewFilters(
 		filter.FilterConfigs{
-			Sql:      "SELECT * FROM users",
-			Paginate: true,
-			LimitMin: 3,
-			LimitMax: 20,
+			SqlSelect: "SELECT * FROM users",
+			Paginate:  true,
+			LimitMin:  3,
+			LimitMax:  20,
 		},
 	)
 

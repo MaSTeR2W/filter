@@ -15,7 +15,7 @@ func TestDateFilter(t *testing.T) {
 	var sql = "SELECT * FROM users"
 	var fs = filter.NewFilters(
 		filter.FilterConfigs{
-			Sql: sql,
+			SqlSelect: sql,
 		},
 		filter.MustCreateNewDateFilter(
 			filter.DateFilterOpts{
@@ -473,7 +473,7 @@ func TestDateFilter(t *testing.T) {
 	var test_after_now_date_ar = func(t *testing.T) {
 		var fs = filter.NewFilters(
 			filter.FilterConfigs{
-				Sql: "SELET * FROM users",
+				SqlSelect: "SELET * FROM users",
 			},
 			filter.MustCreateNewDateFilter(filter.DateFilterOpts{
 				Key:      "modified",
@@ -526,7 +526,7 @@ func TestDateFilter(t *testing.T) {
 	var test_before_now_date_ar = func(t *testing.T) {
 		var fs = filter.NewFilters(
 			filter.FilterConfigs{
-				Sql: "SELET * FROM users",
+				SqlSelect: "SELET * FROM users",
 			},
 			filter.MustCreateNewDateFilter(filter.DateFilterOpts{
 				Key:       "modified",
@@ -697,7 +697,7 @@ func TestDateFilter(t *testing.T) {
 	var test_after_now_date_en = func(t *testing.T) {
 		var fs = filter.NewFilters(
 			filter.FilterConfigs{
-				Sql: "SELET * FROM users",
+				SqlSelect: "SELET * FROM users",
 			},
 			filter.MustCreateNewDateFilter(filter.DateFilterOpts{
 				Key:      "modified",
@@ -750,7 +750,7 @@ func TestDateFilter(t *testing.T) {
 	var test_before_now_date_en = func(t *testing.T) {
 		var fs = filter.NewFilters(
 			filter.FilterConfigs{
-				Sql: "SELET * FROM users",
+				SqlSelect: "SELET * FROM users",
 			},
 			filter.MustCreateNewDateFilter(filter.DateFilterOpts{
 				Key:       "modified",

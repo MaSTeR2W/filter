@@ -14,7 +14,7 @@ func TestStringFilterExceedMaxLengthAr(t *testing.T) {
 
 	const sql = "SELECT * FROM users "
 	var f = filter.NewFilters(filter.FilterConfigs{
-		Sql: sql,
+		SqlSelect: sql,
 	}, filter.NewStrFilter(filter.StrFilterOpts{
 		Key:          "name",
 		EnableMaxLen: true,
@@ -42,7 +42,7 @@ func TestStringFilterExceedMaxLengthEn(t *testing.T) {
 
 	const sql = "SELECT * FROM users "
 	var f = filter.NewFilters(filter.FilterConfigs{
-		Sql: sql,
+		SqlSelect: sql,
 	}, filter.NewStrFilter(filter.StrFilterOpts{
 		Key:          "name",
 		EnableMaxLen: true,
@@ -70,7 +70,7 @@ func TestStringFilterEQ(t *testing.T) {
 
 	const sql = "SELECT * FROM users "
 	var f = filter.NewFilters(filter.FilterConfigs{
-		Sql: sql,
+		SqlSelect: sql,
 	}, filter.NewStrFilter(filter.StrFilterOpts{
 		Key:          "name",
 		EnableMaxLen: true,
@@ -96,7 +96,7 @@ func TestStringFilterSW(t *testing.T) {
 
 	const sql = "SELECT * FROM users "
 	var f = filter.NewFilters(filter.FilterConfigs{
-		Sql: sql,
+		SqlSelect: sql,
 	}, filter.NewStrFilter(filter.StrFilterOpts{
 		Key:          "name",
 		EnableMaxLen: true,
@@ -122,7 +122,7 @@ func TestStringFilterEW(t *testing.T) {
 
 	const sql = "SELECT * FROM users "
 	var f = filter.NewFilters(filter.FilterConfigs{
-		Sql: sql,
+		SqlSelect: sql,
 	}, filter.NewStrFilter(filter.StrFilterOpts{
 		Key:          "name",
 		EnableMaxLen: true,
@@ -148,7 +148,7 @@ func TestStringFilterCT(t *testing.T) {
 
 	const sql = "SELECT * FROM users "
 	var f = filter.NewFilters(filter.FilterConfigs{
-		Sql: sql,
+		SqlSelect: sql,
 	}, filter.NewStrFilter(filter.StrFilterOpts{
 		Key:          "name",
 		EnableMaxLen: true,
@@ -174,7 +174,7 @@ func TestStringFilterNULL(t *testing.T) {
 
 	const sql = "SELECT * FROM users "
 	var f = filter.NewFilters(filter.FilterConfigs{
-		Sql: sql,
+		SqlSelect: sql,
 	}, filter.NewStrFilter(filter.StrFilterOpts{
 		Key:          "name",
 		EnableMaxLen: true,

@@ -3,30 +3,33 @@ package filter
 import "net/url"
 
 type filters struct {
-	sql       string
-	filters   []Filter
-	len       int
-	paginate  bool
-	paginator *paginator
-	ordering  bool
-	orderer   orderer
+	sql_select string
+	sql_count  string
+	filters    []Filter
+	len        int
+	paginate   bool
+	paginator  *paginator
+	ordering   bool
+	orderer    orderer
 }
 
 type FilterConfigs struct {
-	Sql      string
-	Paginate bool
-	LimitMin int // minimum allowed value for limit
-	LimitMax int // maximum allowed value for limit
-	OrderBy  []string
+	SqlSelect string
+	SqlCount  string
+	Paginate  bool
+	LimitMin  int // minimum allowed value for limit
+	LimitMax  int // maximum allowed value for limit
+	OrderBy   []string
 }
 
 func NewFilters(cfg FilterConfigs, fs ...Filter) *filters {
 
 	var f = filters{
-		sql:      cfg.Sql,
-		filters:  fs,
-		paginate: cfg.Paginate,
-		len:      len(fs),
+		sql_select: cfg.SqlSelect,
+		sql_count:  cfg.SqlCount,
+		filters:    fs,
+		paginate:   cfg.Paginate,
+		len:        len(fs),
 	}
 
 	if cfg.Paginate {
@@ -110,6 +113,60 @@ func (f *filters) ValidateAndConstruct(v url.Values, lang string) (string, error
 		query_suffix += " " + limit_offset
 	}
 
-	return f.sql + query_suffix, nil
+	return f.sql_select + query_suffix, nil
 
+}
+
+func (f *filters) ValidateAndConstructWithCount(v url.Values, lang string) (string, string, error) {
+	var errs = make(FilterErrs, 0, f.len)
+
+	var conds = ""
+	var cond string
+
+	var err error
+
+	for _, f := range f.filters {
+		if cond, err = f.validate_and_construct(v, lang); err != nil {
+			errs = append(errs, err)
+			continue
+		}
+
+		if cond != "" {
+			conds += " AND " + cond
+		}
+
+	}
+
+	var order_by string
+
+	if f.ordering {
+		if order_by, err = f.orderer.order(v, lang); err != nil {
+			errs = append(errs, err)
+		} else {
+			order_by = " " + order_by
+		}
+	}
+
+	var limit_offset string
+
+	if f.paginate {
+		if limit_offset, err = f.paginator.paginate(v, lang); err != nil {
+			errs = append(errs, err)
+		} else {
+			limit_offset = " " + limit_offset
+		}
+	}
+
+	if len(errs) > 0 {
+		return "", "", &errs
+	}
+
+	var where string
+
+	if len(conds) > 0 {
+		conds = conds[5:]
+		where = " WHERE " + conds
+	}
+
+	return f.sql_select + where + order_by + limit_offset, f.sql_count + where, nil
 }
